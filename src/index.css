@@ -7,6 +7,46 @@
 
 @layer base {
   :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 212 73% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 42 100% 70%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 42 100% 70%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 42 100% 70%;
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 5.9% 95%;
+    --sidebar-foreground: 240 10% 3.9%;
+    --sidebar-primary: 212 73% 59%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 10% 3.9%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
     --background: 220 14% 12%;
     --foreground: 0 0% 98%;
 
@@ -34,7 +74,6 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 42 100% 70%;
-    --radius: 0.75rem;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -53,7 +92,7 @@
   }
 
   body {
-    @apply bg-pathscout-darker text-foreground font-inter;
+    @apply bg-background text-foreground font-inter transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -63,15 +102,31 @@
 
 @layer components {
   .glass-card {
-    @apply bg-pathscout-gray/30 backdrop-blur-md border border-white/10 shadow-lg;
+    @apply bg-background/30 dark:bg-pathscout-gray/30 backdrop-blur-md border border-border shadow-lg transition-all duration-300;
   }
   
   .glass-button {
-    @apply bg-pathscout-blue/20 backdrop-blur-sm border border-white/10 shadow-md hover:bg-pathscout-blue/30 transition-all duration-300;
+    @apply bg-primary/20 backdrop-blur-sm border border-border shadow-md hover:bg-primary/30 transition-all duration-300;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-pathscout-blue to-pathscout-yellow bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .animate-fade-in {
+    @apply opacity-0 animate-[fadeIn_0.5s_ease-out_forwards];
+  }
+
+  .animate-slide-in {
+    @apply translate-y-10 opacity-0 animate-[slideIn_0.5s_ease-out_forwards];
+  }
+  
+  .animate-scale-in {
+    @apply scale-95 opacity-0 animate-[scaleIn_0.3s_ease-out_forwards];
+  }
+  
+  .animate-bounce-in {
+    @apply scale-95 opacity-0 animate-[bounceIn_0.5s_cubic-bezier(0.17,0.67,0.83,0.67)_forwards];
   }
 
   .glow {
@@ -79,8 +134,30 @@
   }
 
   .glow::after {
-    @apply content-[''] absolute -z-10 top-0 right-0 bottom-0 left-0 bg-pathscout-blue/20 blur-xl opacity-50;
+    @apply content-[''] absolute -z-10 top-0 right-0 bottom-0 left-0 bg-primary/20 blur-xl opacity-50;
   }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  70% { transform: scale(1.05); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* Hide scrollbar but allow scrolling */

@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Pages
 import Index from "./pages/Index";
@@ -17,6 +17,7 @@ import SkillDevelopment from "./pages/SkillDevelopment";
 import JobSimulation from "./pages/JobSimulation";
 import AlumniNetwork from "./pages/AlumniNetwork";
 import DailyTasks from "./pages/DailyTasks";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 // Add dependency for GSAP
 import gsap from "gsap";
@@ -41,25 +42,27 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/career" element={<CareerAssessment />} />
-            <Route path="/dashboard/explore-careers" element={<ExploreCareer />} />
-            <Route path="/dashboard/skills" element={<SkillDevelopment />} />
-            <Route path="/dashboard/job-simulation" element={<JobSimulation />} />
-            <Route path="/dashboard/alumni" element={<AlumniNetwork />} />
-            <Route path="/dashboard/daily-tasks" element={<DailyTasks />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <ThemeProvider defaultTheme="dark">
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/career" element={<CareerAssessment />} />
+              <Route path="/dashboard/explore-careers" element={<ExploreCareer />} />
+              <Route path="/dashboard/skills" element={<SkillDevelopment />} />
+              <Route path="/dashboard/job-simulation" element={<JobSimulation />} />
+              <Route path="/dashboard/alumni" element={<AlumniNetwork />} />
+              <Route path="/dashboard/daily-tasks" element={<DailyTasks />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };
