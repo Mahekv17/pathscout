@@ -39,7 +39,7 @@ const testimonials = [
     role: 'Product Manager',
     company: 'InnoTech',
     avatar: 'https://randomuser.me/api/portraits/men/22.jpg',
-    content: 'PathScout's personality assessment matched me with product management, a career I hadn't considered before. Now I'm thriving in a role that fits my strengths perfectly.',
+    content: "PathScout's personality assessment matched me with product management, a career I hadn't considered before. Now I'm thriving in a role that fits my strengths perfectly.",
     rating: 5,
   },
 ];
