@@ -9,6 +9,33 @@ import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { ChevronRight, ChevronLeft, CheckCircle } from 'lucide-react';
 
+// Define proper TypeScript interfaces for our question types
+interface PersonalityQuestion {
+  id: string;
+  text: string;
+  trait: string;
+}
+
+interface AptitudeQuestion {
+  id: string;
+  text: string;
+  type: string;
+  options: string[];
+}
+
+// Use a type union to represent both question types
+type QuestionType = PersonalityQuestion | AptitudeQuestion;
+
+// Type guard to check if a question is a personality question
+const isPersonalityQuestion = (question: QuestionType): question is PersonalityQuestion => {
+  return 'trait' in question;
+};
+
+// Type guard to check if a question is an aptitude question
+const isAptitudeQuestion = (question: QuestionType): question is AptitudeQuestion => {
+  return 'type' in question;
+};
+
 const CareerAssessment = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
@@ -22,7 +49,7 @@ const CareerAssessment = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const personalityQuestions = [
+  const personalityQuestions: PersonalityQuestion[] = [
     {
       id: 'q1',
       text: 'I enjoy working with people more than working alone.',
@@ -50,7 +77,7 @@ const CareerAssessment = () => {
     }
   ];
 
-  const aptitudeQuestions = [
+  const aptitudeQuestions: AptitudeQuestion[] = [
     {
       id: 'a1',
       text: 'Which of these patterns comes next in the sequence?',
@@ -83,7 +110,7 @@ const CareerAssessment = () => {
     }
   ];
 
-  const currentQuestions = currentStep === 1 ? personalityQuestions : aptitudeQuestions;
+  const currentQuestions: QuestionType[] = currentStep === 1 ? personalityQuestions : aptitudeQuestions;
   const totalQuestions = personalityQuestions.length + aptitudeQuestions.length;
   const completedQuestions = Object.keys(answers).length;
   const progressPercentage = (completedQuestions / totalQuestions) * 100;
@@ -156,7 +183,9 @@ const CareerAssessment = () => {
                   
                   {currentStep === 1 ? (
                     <div className="space-y-4">
-                      <p className="text-white/70 text-sm mb-4">{currentQuestions[currentQuestion].trait}</p>
+                      {isPersonalityQuestion(currentQuestions[currentQuestion]) && (
+                        <p className="text-white/70 text-sm mb-4">{currentQuestions[currentQuestion].trait}</p>
+                      )}
                       <div className="flex flex-col space-y-3">
                         {[
                           { value: 1, label: 'Strongly Disagree' },
@@ -182,22 +211,26 @@ const CareerAssessment = () => {
                     </div>
                   ) : (
                     <div className="space-y-4">
-                      <p className="text-white/70 text-sm mb-4">{currentQuestions[currentQuestion].type}</p>
+                      {isAptitudeQuestion(currentQuestions[currentQuestion]) && (
+                        <p className="text-white/70 text-sm mb-4">{currentQuestions[currentQuestion].type}</p>
+                      )}
                       <div className="flex flex-col space-y-3">
-                        {aptitudeQuestions[currentQuestion].options.map((option, index) => (
-                          <Button
-                            key={index}
-                            variant={answers[currentQuestions[currentQuestion].id] === index ? 'default' : 'outline'}
-                            className={`justify-start h-12 ${
-                              answers[currentQuestions[currentQuestion].id] === index 
-                                ? 'bg-pathscout-blue hover:bg-pathscout-blue/90' 
-                                : 'border-white/10 hover:bg-white/5'
-                            }`}
-                            onClick={() => handleAnswer(currentQuestions[currentQuestion].id, index)}
-                          >
-                            {option}
-                          </Button>
-                        ))}
+                        {isAptitudeQuestion(currentQuestions[currentQuestion]) && 
+                          currentQuestions[currentQuestion].options.map((option, index) => (
+                            <Button
+                              key={index}
+                              variant={answers[currentQuestions[currentQuestion].id] === index ? 'default' : 'outline'}
+                              className={`justify-start h-12 ${
+                                answers[currentQuestions[currentQuestion].id] === index 
+                                  ? 'bg-pathscout-blue hover:bg-pathscout-blue/90' 
+                                  : 'border-white/10 hover:bg-white/5'
+                              }`}
+                              onClick={() => handleAnswer(currentQuestions[currentQuestion].id, index)}
+                            >
+                              {option}
+                            </Button>
+                          ))
+                        }
                       </div>
                     </div>
                   )}
