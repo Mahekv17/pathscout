@@ -38,9 +38,9 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-white/80 hover:text-white transition-colors">Home</Link>
-          <Link to="/auth" className="text-white/80 hover:text-white transition-colors">Features</Link>
-          <Link to="/auth" className="text-white/80 hover:text-white transition-colors">Testimonials</Link>
-          <Link to="/auth" className="text-white/80 hover:text-white transition-colors">About</Link>
+          <Link to="/dashboard/explore-careers" className="text-white/80 hover:text-white transition-colors">Careers</Link>
+          <Link to="/dashboard/skills" className="text-white/80 hover:text-white transition-colors">Skills</Link>
+          <Link to="/dashboard" className="text-white/80 hover:text-white transition-colors">Dashboard</Link>
           <Link to="/auth">
             <Button className="bg-pathscout-blue hover:bg-pathscout-blue/90 text-white">
               Get Started
@@ -61,9 +61,9 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-pathscout-dark/95 backdrop-blur-md shadow-lg py-4 px-6 flex flex-col space-y-4 animate-fade-in">
           <Link to="/" className="text-white/80 hover:text-white transition-colors py-2">Home</Link>
-          <Link to="/auth" className="text-white/80 hover:text-white transition-colors py-2">Features</Link>
-          <Link to="/auth" className="text-white/80 hover:text-white transition-colors py-2">Testimonials</Link>
-          <Link to="/auth" className="text-white/80 hover:text-white transition-colors py-2">About</Link>
+          <Link to="/dashboard/explore-careers" className="text-white/80 hover:text-white transition-colors py-2">Careers</Link>
+          <Link to="/dashboard/skills" className="text-white/80 hover:text-white transition-colors py-2">Skills</Link>
+          <Link to="/dashboard" className="text-white/80 hover:text-white transition-colors py-2">Dashboard</Link>
           <Link to="/auth">
             <Button className="w-full bg-pathscout-blue hover:bg-pathscout-blue/90 text-white">
               Get Started

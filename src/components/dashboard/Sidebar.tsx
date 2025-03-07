@@ -11,7 +11,8 @@ import {
   Settings, 
   LogOut,
   ChevronLeft,
-  Menu 
+  Menu,
+  Compass 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -37,6 +38,12 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }: SidebarProps) => {
       label: 'Career Assessment',
       href: '/dashboard/career',
       active: location.pathname === '/dashboard/career',
+    },
+    {
+      icon: Compass,
+      label: 'Explore Careers',
+      href: '/dashboard/explore-careers',
+      active: location.pathname === '/dashboard/explore-careers',
     },
     {
       icon: BookOpen,

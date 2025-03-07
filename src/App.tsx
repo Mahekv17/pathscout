@@ -11,6 +11,8 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import CareerAssessment from "./pages/CareerAssessment";
+import ExploreCareer from "./pages/ExploreCareer";
 
 // Add dependency for GSAP
 import gsap from "gsap";
@@ -43,12 +45,12 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/career" element={<Dashboard />} />
+            <Route path="/dashboard/career" element={<CareerAssessment />} />
+            <Route path="/dashboard/explore-careers" element={<ExploreCareer />} />
             <Route path="/dashboard/skills" element={<Dashboard />} />
             <Route path="/dashboard/job-simulation" element={<Dashboard />} />
             <Route path="/dashboard/alumni" element={<Dashboard />} />
             <Route path="/dashboard/daily-tasks" element={<Dashboard />} />
-            <Route path="/dashboard/explore-careers" element={<Dashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

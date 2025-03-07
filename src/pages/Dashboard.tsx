@@ -1,13 +1,13 @@
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Sidebar from '@/components/dashboard/Sidebar';
 import Header from '@/components/dashboard/Header';
-import { Briefcase, BookOpen, Monitor, Users, BarChart2, ArrowRight } from 'lucide-react';
+import { Briefcase, BookOpen, Monitor, Users, BarChart2, ArrowRight, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const isMobile = useIsMobile();
@@ -51,6 +51,11 @@ const Dashboard = () => {
               <h3 className="text-lg font-semibold mb-1">Career Assessment</h3>
               <p className="text-white/70 text-sm mb-3">Discover your ideal career path</p>
               <Progress value={80} className="h-2 bg-white/10" />
+              <Link to="/dashboard/career" className="block mt-4">
+                <Button size="sm" variant="outline" className="w-full border-white/10 hover:bg-white/5">
+                  Continue Assessment
+                </Button>
+              </Link>
             </Card>
             
             <Card className="glass-card p-6 rounded-xl border-white/10">
@@ -63,6 +68,11 @@ const Dashboard = () => {
               <h3 className="text-lg font-semibold mb-1">Skill Development</h3>
               <p className="text-white/70 text-sm mb-3">Build skills for your target career</p>
               <Progress value={30} className="h-2 bg-white/10" />
+              <Link to="/dashboard/skills" className="block mt-4">
+                <Button size="sm" variant="outline" className="w-full border-white/10 hover:bg-white/5">
+                  Continue Learning
+                </Button>
+              </Link>
             </Card>
             
             <Card className="glass-card p-6 rounded-xl border-white/10">
@@ -75,6 +85,11 @@ const Dashboard = () => {
               <h3 className="text-lg font-semibold mb-1">Career Progress</h3>
               <p className="text-white/70 text-sm mb-3">Track your journey to your goals</p>
               <Progress value={55} className="h-2 bg-white/10" />
+              <Link to="/dashboard/explore-careers" className="block mt-4">
+                <Button size="sm" variant="outline" className="w-full border-white/10 hover:bg-white/5">
+                  Explore Careers
+                </Button>
+              </Link>
             </Card>
           </div>
           
@@ -93,9 +108,11 @@ const Dashboard = () => {
                         <h4 className="font-medium">Product Management</h4>
                         <p className="text-white/70 text-sm">Match: 92%</p>
                       </div>
-                      <Button className="ml-auto glass-button p-2 h-9 w-9">
-                        <ArrowRight size={18} />
-                      </Button>
+                      <Link to="/dashboard/explore-careers" className="ml-auto">
+                        <Button className="glass-button p-2 h-9 w-9">
+                          <ArrowRight size={18} />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                   
@@ -108,9 +125,11 @@ const Dashboard = () => {
                         <h4 className="font-medium">UX/UI Design</h4>
                         <p className="text-white/70 text-sm">Match: 85%</p>
                       </div>
-                      <Button className="ml-auto glass-button p-2 h-9 w-9">
-                        <ArrowRight size={18} />
-                      </Button>
+                      <Link to="/dashboard/explore-careers" className="ml-auto">
+                        <Button className="glass-button p-2 h-9 w-9">
+                          <ArrowRight size={18} />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                   
@@ -123,15 +142,17 @@ const Dashboard = () => {
                         <h4 className="font-medium">Data Analysis</h4>
                         <p className="text-white/70 text-sm">Match: 78%</p>
                       </div>
-                      <Button className="ml-auto glass-button p-2 h-9 w-9">
-                        <ArrowRight size={18} />
-                      </Button>
+                      <Link to="/dashboard/explore-careers" className="ml-auto">
+                        <Button className="glass-button p-2 h-9 w-9">
+                          <ArrowRight size={18} />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 
                 <div className="mt-6">
-                  <Link to="/dashboard/career">
+                  <Link to="/dashboard/explore-careers">
                     <Button variant="outline" className="border-white/10 hover:bg-white/5 w-full">
                       View All Career Matches
                     </Button>
