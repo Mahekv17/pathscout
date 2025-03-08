@@ -1,8 +1,7 @@
 
 import {
-  ToastProvider,
-  ToastAction,
   useToast,
+  ToastAction,
   type ToastActionElement,
   type ToastProps
 } from "@/hooks/use-toast"
