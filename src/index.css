@@ -7,6 +7,7 @@
 
 @layer base {
   :root {
+    /* Light mode colors - brightened for students */
     --background: 210 40% 98%;
     --foreground: 222 47% 11%;
 
@@ -47,6 +48,7 @@
   }
 
   .dark {
+    /* Dark mode colors - more vibrant for students */
     --background: 220 14% 12%;
     --foreground: 0 0% 98%;
 
@@ -136,6 +138,19 @@
   .glow::after {
     @apply content-[''] absolute -z-10 top-0 right-0 bottom-0 left-0 bg-primary/20 blur-xl opacity-50;
   }
+
+  /* Fun student-friendly styles */
+  .student-card {
+    @apply rounded-xl border border-primary/20 transition-all duration-300 hover:shadow-lg hover:border-primary/50;
+  }
+  
+  .achievement-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-pathscout-yellow/20 text-pathscout-yellow;
+  }
+  
+  .skill-pill {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pathscout-blue/10 text-pathscout-blue;
+  }
 }
 
 /* Keyframes for animations */
@@ -183,6 +198,42 @@ body::-webkit-scrollbar {
 .card-hover:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Fun background patterns for students */
+.dots-pattern {
+  background-image: radial-gradient(#4A90E2 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.zigzag-pattern {
+  background: linear-gradient(135deg, #f5f7fa 25%, transparent 25%) -10px 0,
+              linear-gradient(225deg, #f5f7fa 25%, transparent 25%) -10px 0,
+              linear-gradient(315deg, #f5f7fa 25%, transparent 25%),
+              linear-gradient(45deg, #f5f7fa 25%, transparent 25%);
+  background-size: 20px 20px;
+}
+
+/* Animated illustration backgrounds */
+.bubbles {
+  position: relative;
+  overflow: hidden;
+}
+
+.bubbles::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(157, 101, 201, 0.1) 0%, transparent 50%);
+  animation: pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); }
+  100% { transform: scale(1.2); }
 }
 
 #root {
