@@ -1,244 +1,128 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ 
 @layer base {
   :root {
-    /* Light mode colors - brightened for students */
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
+    --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 212 73% 59%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 42 100% 70%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
-
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-
-    --accent: 42 100% 70%;
+    --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 84% 70%;
-    --radius: 0.75rem;
-
-    --sidebar-background: 240 5.9% 95%;
-    --sidebar-foreground: 240 10% 3.9%;
-    --sidebar-primary: 212 73% 59%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 10% 3.9%;
-    --sidebar-border: 240 5.9% 90%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
   }
-
+ 
   .dark {
-    /* Dark mode colors - more vibrant for students */
-    --background: 220 14% 12%;
+    --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-
-    --card: 220 14% 10%;
+    --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-
-    --popover: 220 14% 10%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-
-    --primary: 212 73% 59%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 42 100% 70%;
-    --secondary-foreground: 240 5.9% 10%;
-
-    --muted: 220 14% 18%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-
-    --accent: 42 100% 70%;
-    --accent-foreground: 240 5.9% 10%;
-
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 42 100% 70%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 212 73% 59%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-inter transition-colors duration-300;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-poppins;
+    --ring: 240 4.9% 83.9%;
   }
 }
 
 @layer components {
+  .hero-gradient {
+    @apply bg-gradient-to-br from-pathscout-dark via-pathscout-dark to-pathscout-darker;
+  }
+  
   .glass-card {
-    @apply bg-background/30 dark:bg-pathscout-gray/30 backdrop-blur-md border border-border shadow-lg transition-all duration-300;
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-pathscout-blue to-pathscout-yellow bg-clip-text text-transparent;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:bg-white/10 hover:translate-y-[-5px] hover:shadow-lg;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-float.delay-75 {
+    animation-delay: 0.75s;
+  }
+  
+  .animate-float.delay-150 {
+    animation-delay: 1.5s;
+  }
+  
+  .animate-float.delay-225 {
+    animation-delay: 2.25s;
   }
   
   .glass-button {
-    @apply bg-primary/20 backdrop-blur-sm border border-border shadow-md hover:bg-primary/30 transition-all duration-300;
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg transition-colors hover:bg-white/10;
   }
-
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
-  }
-
+  
   .animate-fade-in {
-    @apply opacity-0 animate-[fadeIn_0.5s_ease-out_forwards];
-  }
-
-  .animate-slide-in {
-    @apply translate-y-10 opacity-0 animate-[slideIn_0.5s_ease-out_forwards];
-  }
-  
-  .animate-scale-in {
-    @apply scale-95 opacity-0 animate-[scaleIn_0.3s_ease-out_forwards];
-  }
-  
-  .animate-bounce-in {
-    @apply scale-95 opacity-0 animate-[bounceIn_0.5s_cubic-bezier(0.17,0.67,0.83,0.67)_forwards];
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s forwards;
   }
 
   .glow {
-    @apply relative;
-  }
-
-  .glow::after {
-    @apply content-[''] absolute -z-10 top-0 right-0 bottom-0 left-0 bg-primary/20 blur-xl opacity-50;
-  }
-
-  /* Fun student-friendly styles */
-  .student-card {
-    @apply rounded-xl border border-primary/20 transition-all duration-300 hover:shadow-lg hover:border-primary/50;
-  }
-  
-  .achievement-badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-pathscout-yellow/20 text-pathscout-yellow;
-  }
-  
-  .skill-pill {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pathscout-blue/10 text-pathscout-blue;
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.2);
   }
 }
 
-/* Keyframes for animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes slideIn {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 10px 3px rgba(79, 70, 229, 0.4);
+  }
 }
 
-@keyframes scaleIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes bounceIn {
-  0% { transform: scale(0.9); opacity: 0; }
-  70% { transform: scale(1.05); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-/* Hide scrollbar but allow scrolling */
-body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  overflow-x: hidden;
-}
-
-body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
-
-/* Custom styling for ReactJS sections */
-.hero-gradient {
-  background: radial-gradient(circle at center, rgba(74, 144, 226, 0.2) 0%, rgba(30, 30, 30, 0) 70%);
-}
-
-.card-hover {
-  transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Fun background patterns for students */
-.dots-pattern {
-  background-image: radial-gradient(#4A90E2 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-.zigzag-pattern {
-  background: linear-gradient(135deg, #f5f7fa 25%, transparent 25%) -10px 0,
-              linear-gradient(225deg, #f5f7fa 25%, transparent 25%) -10px 0,
-              linear-gradient(315deg, #f5f7fa 25%, transparent 25%),
-              linear-gradient(45deg, #f5f7fa 25%, transparent 25%);
-  background-size: 20px 20px;
-}
-
-/* Animated illustration backgrounds */
-.bubbles {
-  position: relative;
-  overflow: hidden;
-}
-
-.bubbles::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(157, 101, 201, 0.1) 0%, transparent 50%);
-  animation: pulse 3s ease-in-out infinite alternate;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.8); }
-  100% { transform: scale(1.2); }
-}
-
-#root {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: left;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }

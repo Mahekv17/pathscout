@@ -5,28 +5,7 @@ import { createContext, useContext, useState } from "react";
 const TOAST_LIMIT = 20;
 const TOAST_REMOVE_DELAY = 1000;
 
-type ToastType = "default" | "destructive";
-type ToastActionElement = React.ReactElement;
-
-type ToastProps = {
-  id: string;
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-  action?: ToastActionElement;
-  variant?: ToastType;
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
-};
-
-type Toast = ToastProps;
-
-const ToastActionContext = createContext<{
-  toasts: Toast[];
-  addToast: (toast: Toast) => void;
-  updateToast: (toast: Toast) => void;
-  dismissToast: (toastId: string) => void;
-  removeToast: (toastId: string) => void;
-} | null>(null);
+const ToastActionContext = createContext(null);
 
 function useToast() {
   const context = useContext(ToastActionContext);
@@ -38,14 +17,10 @@ function useToast() {
   return context;
 }
 
-export function ToastProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [toasts, setToasts] = useState<Toast[]>([]);
+export function ToastProvider({ children }) {
+  const [toasts, setToasts] = useState([]);
 
-  const addToast = React.useCallback((toast: Toast) => {
+  const addToast = React.useCallback((toast) => {
     setToasts((prevToasts) => {
       if (prevToasts.length >= TOAST_LIMIT) {
         const nextToasts = [...prevToasts];
@@ -56,7 +31,7 @@ export function ToastProvider({
     });
   }, []);
 
-  const updateToast = React.useCallback((toast: Toast) => {
+  const updateToast = React.useCallback((toast) => {
     if (!toast.id) return;
 
     setToasts((prevToasts) => {
@@ -71,7 +46,7 @@ export function ToastProvider({
     });
   }, []);
 
-  const dismissToast = React.useCallback((toastId: string) => {
+  const dismissToast = React.useCallback((toastId) => {
     setToasts((prevToasts) => {
       return prevToasts.map((toast) =>
         toast.id === toastId ? { ...toast, open: false } : toast
@@ -79,7 +54,7 @@ export function ToastProvider({
     });
   }, []);
 
-  const removeToast = React.useCallback((toastId: string) => {
+  const removeToast = React.useCallback((toastId) => {
     setToasts((prevToasts) => {
       return prevToasts.filter((toast) => toast.id !== toastId);
     });
@@ -100,12 +75,7 @@ export function ToastProvider({
   );
 }
 
-export function toast({
-  title,
-  description,
-  variant = "default",
-  action,
-}: Omit<ToastProps, "id" | "open" | "onOpenChange">) {
+export function toast({ title, description, variant = "default", action }) {
   const { addToast } = useToast();
 
   const id = React.useId();
@@ -119,14 +89,14 @@ export function toast({
   return {
     id,
     dismiss,
-    update: ({ title, description, variant, action }: Omit<ToastProps, "id">) => {
+    update: ({ title, description, variant, action }) => {
       const { updateToast } = useToast();
       updateToast({ id, title, description, variant, action });
     },
   };
 }
 
-export { type ToastProps, type ToastActionElement, useToast };
-export const ToastAction = ({ className, ...props }: React.HTMLAttributes<HTMLButtonElement>) => (
+export { useToast };
+export const ToastAction = ({ className, ...props }) => (
   <button className={className} {...props} />
 );
