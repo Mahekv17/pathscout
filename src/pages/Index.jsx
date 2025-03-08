@@ -1,16 +1,11 @@
 
-import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import FeatureSection from '@/components/FeatureSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import { Gamepad, Trophy, Star, Medal, Target, RotateCw, Gift, Zap, Award, Compass } from 'lucide-react';
-import { useTheme } from '@/components/ThemeProvider';
-import { Progress } from '@/components/ui/progress';
 
 // Import GSAP and ScrollTrigger
 import gsap from 'gsap';
