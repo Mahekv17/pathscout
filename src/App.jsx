@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 
 // Pages
@@ -57,6 +57,8 @@ const App = () => {
               <Route path="/dashboard/job-simulation" element={<JobSimulation />} />
               <Route path="/dashboard/alumni" element={<AlumniNetwork />} />
               <Route path="/dashboard/daily-tasks" element={<DailyTasks />} />
+              {/* Redirect from undefined routes to dashboard */}
+              <Route path="/dashboard/*" element={<Navigate to="/dashboard" replace />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

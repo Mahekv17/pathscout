@@ -65,7 +65,7 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
-        // Custom PathScout colors
+        // Custom PathScout colors - more vibrant and kid-friendly
         pathscout: {
           blue: '#4A90E2',
           yellow: '#FFD166',
@@ -73,6 +73,10 @@ export default {
           darker: '#121212',
           gray: '#333333',
           light: '#F5F7FA',
+          green: '#6ECB63',
+          purple: '#9D65C9',
+          orange: '#FF914D',
+          pink: '#FF5C8D'
         }
       },
       borderRadius: {
@@ -124,6 +128,14 @@ export default {
         'rotate-slow': {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
+        },
+        'bounce': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' }
+        },
+        'wiggle': {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' }
         }
       },
       animation: {
@@ -142,7 +154,9 @@ export default {
         'float': 'float 6s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 3s infinite',
         'scale': 'scale 0.5s ease-out forwards',
-        'rotate-slow': 'rotate-slow 20s linear infinite'
+        'rotate-slow': 'rotate-slow 20s linear infinite',
+        'bounce': 'bounce 2s ease-in-out infinite',
+        'wiggle': 'wiggle 1s ease-in-out infinite'
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
