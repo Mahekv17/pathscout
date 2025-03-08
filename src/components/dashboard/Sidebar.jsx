@@ -12,11 +12,7 @@ import {
   LogOut,
   ChevronLeft,
   Menu,
-  Compass,
-  Award,
-  Lightbulb,
-  Gamepad2,
-  Star
+  Compass 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -29,58 +25,48 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }) => {
   const { theme } = useTheme();
   const { toast } = useToast();
   
-  const isDark = theme === 'dark';
-
-  // Updated nav items with more fun icons and student-friendly labels
   const navItems = [
     {
       icon: Home,
-      label: 'My Dashboard',
+      label: 'Dashboard',
       href: '/dashboard',
       active: location.pathname === '/dashboard',
-      color: 'text-pathscout-blue'
     },
     {
-      icon: Lightbulb,
-      label: 'Career Quiz',
+      icon: Briefcase,
+      label: 'Career Assessment',
       href: '/dashboard/career',
       active: location.pathname === '/dashboard/career',
-      color: 'text-pathscout-yellow'
     },
     {
       icon: Compass,
       label: 'Explore Careers',
       href: '/dashboard/explore-careers',
       active: location.pathname === '/dashboard/explore-careers',
-      color: 'text-green-500'
     },
     {
-      icon: Star,
-      label: 'Skill Builder',
+      icon: BookOpen,
+      label: 'Skill Development',
       href: '/dashboard/skills',
       active: location.pathname === '/dashboard/skills',
-      color: 'text-purple-500'
     },
     {
-      icon: Gamepad2,
-      label: 'Career Simulator',
+      icon: Monitor,
+      label: 'Job Simulation',
       href: '/dashboard/job-simulation',
       active: location.pathname === '/dashboard/job-simulation',
-      color: 'text-pink-500'
     },
     {
       icon: Users,
-      label: 'Meet Professionals',
+      label: 'Alumni Network',
       href: '/dashboard/alumni',
       active: location.pathname === '/dashboard/alumni',
-      color: 'text-orange-500'
     },
     {
       icon: Calendar,
-      label: 'My Goals',
+      label: 'Daily Tasks',
       href: '/dashboard/daily-tasks',
       active: location.pathname === '/dashboard/daily-tasks',
-      color: 'text-cyan-500'
     },
   ];
 
@@ -90,7 +76,6 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }) => {
       label: 'Settings',
       href: '/dashboard/settings',
       active: location.pathname === '/dashboard/settings',
-      color: 'text-gray-400',
       onClick: () => {
         toast({
           title: "Settings",
@@ -103,7 +88,6 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }) => {
       label: 'Logout',
       href: '/',
       active: false,
-      color: 'text-gray-400',
       onClick: () => {
         toast({
           title: "Logged out",
@@ -117,32 +101,22 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }) => {
   return (
     <aside
       className={cn(
-        "flex flex-col h-screen fixed z-30 border-r transition-all duration-300 ease-in-out",
-        isDark ? "bg-sidebar border-border" : "bg-white border-gray-200",
+        "flex flex-col h-screen fixed z-30 bg-sidebar border-r border-border transition-all duration-300 ease-in-out",
         isCollapsed ? "w-20" : "w-64",
         isMobile && isCollapsed && "translate-x-[-100%]"
       )}
     >
-      <div className={cn(
-        "flex items-center justify-between p-4 h-16 border-b transition-all",
-        isDark ? "border-border" : "border-gray-200"
-      )}>
+      <div className="flex items-center justify-between p-4 h-16 border-b border-border">
         <div className={cn("flex items-center", isCollapsed && "justify-center w-full")}>
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pathscout-blue to-pathscout-yellow flex items-center justify-center animate-pulse-glow">
             <span className="text-white font-bold text-xl">P</span>
           </div>
-          {!isCollapsed && <span className={cn(
-            "ml-3 font-poppins font-bold text-xl",
-            isDark ? "text-sidebar-foreground" : "text-gray-800"
-          )}>PathScout</span>}
+          {!isCollapsed && <span className="ml-3 text-sidebar-foreground font-poppins font-bold text-xl">PathScout</span>}
         </div>
         {!isMobile && (
           <button 
             onClick={toggleSidebar} 
-            className={cn(
-              "transition-colors",
-              isDark ? "text-sidebar-foreground/70 hover:text-sidebar-foreground" : "text-gray-600 hover:text-gray-800"
-            )}
+            className="text-sidebar-foreground/70 hover:text-sidebar-foreground transition-colors"
           >
             <ChevronLeft size={20} className={cn("transition-transform", isCollapsed && "rotate-180")} />
           </button>
@@ -155,9 +129,7 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }) => {
             variant="outline" 
             size="icon" 
             onClick={toggleSidebar}
-            className={cn(
-              isDark ? "bg-sidebar border-border" : "bg-white border-gray-200"
-            )}
+            className="bg-sidebar border-border"
           >
             <Menu className="h-5 w-5" />
           </Button>
@@ -171,34 +143,25 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }) => {
               className={cn(
                 "flex items-center px-4 py-3 mx-2 rounded-lg transition-all duration-300 animate-fade-in",
                 item.active 
-                  ? isDark ? "bg-primary/20" : "bg-primary/10"
-                  : isDark ? "hover:bg-sidebar-accent/20" : "hover:bg-gray-100",
-                isDark ? "text-sidebar-foreground" : "text-gray-700",
-                item.active && isDark ? "text-sidebar-foreground" : item.active && "text-gray-900"
+                  ? "bg-primary/20 text-sidebar-foreground" 
+                  : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/20"
               )}
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <item.icon 
-                size={22} 
+                size={20} 
                 className={cn(
                   isCollapsed ? "mx-auto" : "mr-3", 
-                  item.active ? item.color : isDark ? "text-sidebar-foreground/60" : "text-gray-500"
+                  item.active && "text-primary"
                 )} 
               />
-              {!isCollapsed && (
-                <span className="transition-all duration-300 font-medium">
-                  {item.label}
-                </span>
-              )}
+              {!isCollapsed && <span className="transition-all duration-300">{item.label}</span>}
             </div>
           </Link>
         ))}
       </div>
 
-      <div className={cn(
-        "p-4 space-y-2 border-t",
-        isDark ? "border-border" : "border-gray-200"
-      )}>
+      <div className="p-4 space-y-2 border-t border-border">
         {bottomNavItems.map((item, index) => (
           <div
             key={index}
@@ -215,15 +178,13 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }) => {
                 className={cn(
                   "flex items-center px-4 py-3 rounded-lg transition-colors",
                   item.active 
-                    ? isDark ? "bg-primary/20" : "bg-primary/10"
-                    : isDark ? "hover:bg-sidebar-accent/20" : "hover:bg-gray-100",
-                  isDark ? "text-sidebar-foreground/70" : "text-gray-500",
-                  item.active && isDark ? "text-sidebar-foreground" : item.active && "text-gray-900"
+                    ? "bg-primary/20 text-sidebar-foreground" 
+                    : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/20"
                 )}
               >
                 <item.icon 
                   size={20} 
-                  className={cn(isCollapsed ? "mx-auto" : "mr-3", item.color)} 
+                  className={cn(isCollapsed ? "mx-auto" : "mr-3")} 
                 />
                 {!isCollapsed && <span>{item.label}</span>}
               </div>
@@ -231,25 +192,6 @@ const Sidebar = ({ isMobile, isCollapsed, toggleSidebar }) => {
           </div>
         ))}
       </div>
-      
-      {/* Add fun decorative elements for students */}
-      {!isCollapsed && (
-        <div className="p-4 mx-2 mb-4 rounded-lg bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-white/10">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center">
-              <Award size={16} className="text-pathscout-yellow mr-2" />
-              <span className={isDark ? "text-white/90" : "text-gray-700"}>XP Points</span>
-            </div>
-            <span className="text-sm font-bold text-pathscout-yellow">250</span>
-          </div>
-          <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-            <div className="h-full bg-pathscout-yellow w-[65%] rounded-full"></div>
-          </div>
-          <div className="mt-1 text-xs text-center text-white/50">
-            Level 3 Explorer
-          </div>
-        </div>
-      )}
     </aside>
   );
 };

@@ -65,7 +65,7 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
-        // Updated PathScout colors - more vibrant and kid-friendly
+        // Custom PathScout colors - more vibrant and kid-friendly
         pathscout: {
           blue: '#4A90E2',
           yellow: '#FFD166',
