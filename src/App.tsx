@@ -4,7 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { ToastProvider } from "@/hooks/use-toast";
 
 // Pages
 import Index from "./pages/Index";
@@ -44,23 +45,25 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/dashboard/career" element={<CareerAssessment />} />
-              <Route path="/dashboard/explore-careers" element={<ExploreCareer />} />
-              <Route path="/dashboard/skills" element={<SkillDevelopment />} />
-              <Route path="/dashboard/job-simulation" element={<JobSimulation />} />
-              <Route path="/dashboard/alumni" element={<AlumniNetwork />} />
-              <Route path="/dashboard/daily-tasks" element={<DailyTasks />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          <ToastProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/dashboard/career" element={<CareerAssessment />} />
+                <Route path="/dashboard/explore-careers" element={<ExploreCareer />} />
+                <Route path="/dashboard/skills" element={<SkillDevelopment />} />
+                <Route path="/dashboard/job-simulation" element={<JobSimulation />} />
+                <Route path="/dashboard/alumni" element={<AlumniNetwork />} />
+                <Route path="/dashboard/daily-tasks" element={<DailyTasks />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </ToastProvider>
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>
