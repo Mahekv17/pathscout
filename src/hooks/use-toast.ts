@@ -6,7 +6,7 @@ const TOAST_LIMIT = 20;
 const TOAST_REMOVE_DELAY = 1000;
 
 type ToastType = "default" | "destructive";
-type ToastActionElement = React.ReactElement<typeof ToastAction>;
+type ToastActionElement = React.ReactElement;
 
 type ToastProps = {
   id: string;
