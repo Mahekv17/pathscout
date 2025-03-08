@@ -84,13 +84,13 @@ const Index = () => {
       <Footer />
       
       {/* Add fun decorative elements that appeal to students */}
-      <div className="fixed top-1/4 right-5 w-8 h-8 bg-yellow-400/30 rounded-full blur-sm floating-element"></div>
-      <div className="fixed top-1/3 left-5 w-10 h-10 bg-blue-500/30 rounded-full blur-sm floating-element"></div>
-      <div className="fixed bottom-1/4 right-8 w-12 h-12 bg-purple-500/20 rounded-full blur-sm floating-element"></div>
-      <div className="fixed bottom-1/3 left-8 w-7 h-7 bg-green-500/20 rounded-full blur-sm floating-element"></div>
+      <div className="fixed top-1/4 right-5 w-6 h-6 bg-pathscout-yellow/30 rounded-full blur-sm floating-element"></div>
+      <div className="fixed top-1/3 left-5 w-8 h-8 bg-pathscout-blue/30 rounded-full blur-sm floating-element"></div>
+      <div className="fixed bottom-1/4 right-8 w-10 h-10 bg-purple-500/20 rounded-full blur-sm floating-element"></div>
+      <div className="fixed bottom-1/3 left-8 w-5 h-5 bg-green-500/20 rounded-full blur-sm floating-element"></div>
       
-      <div className="fixed top-[15%] right-[15%] w-32 h-32 rounded-full border border-dashed border-primary/20 rotate-element opacity-30"></div>
-      <div className="fixed bottom-[20%] left-[10%] w-24 h-24 rounded-full border border-dashed border-accent/20 rotate-element opacity-30"></div>
+      <div className="fixed top-[15%] right-[15%] w-32 h-32 rounded-full border border-dashed border-pathscout-blue/20 rotate-element opacity-30"></div>
+      <div className="fixed bottom-[20%] left-[10%] w-24 h-24 rounded-full border border-dashed border-pathscout-yellow/20 rotate-element opacity-30"></div>
     </div>
   );
 };
